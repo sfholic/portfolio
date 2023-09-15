@@ -1,0 +1,160 @@
+
+/* ------------------------------------------
+공통 CSS 
+-------------------------------------------*/ /* 코드블럭 */ 
+* {
+    font-family: 'Oswald', sans-serif;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none; /* 밑줄 없애기 */
+    color: #000;
+}
+
+/* header, main, footer 영역 안에서 내용의 '넓이'를 제한하는 박스 */
+.content-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+
+
+/* ------------------------------------------
+상단 영역 
+-------------------------------------------*/
+.header {
+    /* 그림자 */
+    box-shadow: 0 1px 3px #474646;
+
+    /* 상단 고정 */
+    position: fixed; /* width 100%를 꼭 줘야됨. 기본적으로 부모를 가득 채우지를 못한다. */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9000;
+
+    /* 다른 영역 위에 떠 있으므로 아래쪽에 스크롤되는 내용을 가리위해 배경색상을 준다. 흰색 처리 */
+    background-color: #fff;
+}
+
+            /* 상단 영역 내의 컨테이너에 속한 아이템들의 배치 구성 */
+            .header .content-container {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            /* 양쪽의 아이콘 버튼 공통 속성 */
+            .header .icon-button {
+                font-size: 24px; /* 아이콘 크기 */
+                font-weight: 900;
+                padding: 16px; /* 아이콘이 링크영역이니까, 링크에 패딩을 부여한 것. */
+            }
+
+            .header .icon-button:hover {
+                background-color:blueviolet;
+                color: aliceblue;
+            }
+
+            /* 사이트 제목 (타이틀) */
+            .header .logo {
+                font-size: 26px; 
+                font-weight: 600;
+                display: flex; /* h1 태그가 아이콘들과 정렬 되지 않고 떠보일 때, flex & align items center 부여 (h1 태그에 공간이 남기 때문에 떠보임) */
+                align-items: center;
+            }
+
+
+
+
+/* ------------------------------------------
+내용 영역 
+-------------------------------------------*/
+.main {
+    background-color: rgb(209, 209, 209);
+
+    /* 상단 바에 가려지는 만큼 여백을 확보 */
+    padding-top: 57px;
+}
+
+
+
+
+/* ------------------------------------------
+하단 영역 
+-------------------------------------------*/
+.footer {
+    /* background-color: rgb(154, 230, 255); */ /* 코드 다 짜고나면 배경 컬러 지워 */
+    border-top: 1px solid #5e5e5e;
+}
+
+            .footer .content-container {
+                display: flex; /* 푸터 박스들을 가로로 배치하기 위해 */
+            }
+
+            .footer .content-container .footer-item {
+                /* 각 영역이 공간을 동일한 비율로 나눠 갖도록 설정 */
+                flex : 1; /* 1. 한 쪽이 width를 가지면서 그 나머지를 나눠가지는 용도 / 2. 각각 영역을 1:1:1 비율로 나눠가지는 용도 */
+                padding: 15px;
+            }
+
+            .footer .content-container .footer-item h3 {
+                font-size: 24px;
+                font-weight: 700px;
+                margin : 22px 0; /* 상하 여백 */
+                text-transform: uppercase; /* 영어 대문자 변환 */
+            }
+
+            .footer .content-container .footer-item:nth-child(1) p { /* 첫번째 footer-item에 있는 p태그 */
+                font-size: 15px;
+                line-height: 150%;
+                font-weight: 300;
+            }
+
+            .footer .content-container .footer-item:nth-child(2) a { 
+                display: flex; /* a태그에 무조건 display : block인데, 그림이랑 텍스트박스를 가로로 배치하고 싶으면 flex */
+                margin: 20px 0; /* 상아 여백 */
+                padding: 0 10px;
+            } 
+
+            .footer .content-container .footer-item:nth-child(2) a img {
+                width: 65px;
+                height: 65px;
+                object-fit: cover;    
+                margin-left: 10px;            
+            }
+
+            .footer .content-container .footer-item:nth-child(2) a .blog-posts-title {
+                font-weight: bold;
+                margin-bottom: 5px;
+                font-size: 15px;
+            } 
+
+            .footer .content-container .footer-item:nth-child(2) a .blog-posts-content {
+                line-height: 1.2;
+
+            }
+
+            .footer .content-container .footer-item:nth-child(3) .tags li {
+                display: inline-block; /* 문장요소를 박스의 효과도 갖게 하면서 가로로 배치 */
+                background-color: #474646;
+                color: #ffffff;
+                padding: 5px 10px;
+                margin-bottom: 8px;
+                font-size: 13px;
+                
+            }
+
+            .footer .content-container .footer-item:nth-child(3) .tags li.black {
+                background-color: #000000;
+                
+            }
+
+            /* max-width 768 - 모바일 최적화 반응형 사이즈 */
+            @media only screen and (max-width: 768px) {
+                /* 모바일 해상도에서 세로 정렬 */
+                .footer .content-container {
+                    flex-direction: column;
+                }
+            }
